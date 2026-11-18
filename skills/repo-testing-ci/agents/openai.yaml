@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Testing and CI"
+  short_description: "Discover repo tooling and ship tests with every PR"
+  default_prompt: "Use $repo-testing-ci to discover this repository and improve its tests and CI, keeping each PR self-contained."
