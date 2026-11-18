@@ -14,8 +14,9 @@ class PackageTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory(prefix='skill package ')
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        for name in ('README.md', 'scripts/validate_skill.py',
+        for name in ('README.md', 'LICENSE', 'scripts/validate_skill.py',
                      'skills/repo-testing-ci/SKILL.md',
+                     'skills/repo-testing-ci/LICENSE',
                      'skills/repo-testing-ci/agents/openai.yaml'):
             destination = self.root / name
             destination.parent.mkdir(parents=True, exist_ok=True)

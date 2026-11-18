@@ -1,30 +1,44 @@
-# Repository Testing and CI
+# AgentSupply
 
-A portable agent skill for repository testing, CI, and clear pull request descriptions.
+An MIT-licensed marketplace for skills you can install in Codex and Claude Code.
 
-The skill discovers the repository's stack and existing conventions, keeps implementation and tests together, diagnoses actual CI failures, and reports what was verified. It adapts to the project instead of assuming a framework or CI provider.
+[`repo-testing-ci`](skills/repo-testing-ci/SKILL.md) is the first skill. It discovers the repository's stack and conventions, keeps implementation and tests together, diagnoses CI failures, and gives pull requests a clear validation summary.
 
 ## Install
 
 ### Codex
 
-Ask Codex to install the skill:
+Add the marketplace and install AgentSupply:
+
+```sh
+codex plugin marketplace add cybrking/agent-supply
+codex plugin add agent-supply@agent-supply
+```
+
+To install only `repo-testing-ci`, ask Codex:
 
 ```text
-$skill-installer Install https://github.com/cybrking/repo-testing-ci/tree/main/skills/repo-testing-ci
+$skill-installer Install https://github.com/cybrking/agent-supply/tree/main/skills/repo-testing-ci
 ```
 
 The installer preserves an existing installation. The skill is available on the next turn after installation.
+
+### Claude Code
+
+```sh
+claude plugin marketplace add cybrking/agent-supply
+claude plugin install agent-supply@agent-supply
+```
 
 ### Manual installation
 
 Clone this repository and copy the [skill directory](skills/repo-testing-ci) into your agent's skills directory. For Codex's default installation location:
 
 ```sh
-git clone https://github.com/cybrking/repo-testing-ci.git
+git clone https://github.com/cybrking/agent-supply.git
 mkdir -p ~/.codex/skills
 test ! -e ~/.codex/skills/repo-testing-ci && \
-  cp -R repo-testing-ci/skills/repo-testing-ci ~/.codex/skills/
+  cp -R agent-supply/skills/repo-testing-ci ~/.codex/skills/
 ```
 
 For Claude Code, use `~/.claude/skills/` as the destination. If the destination already exists, compare and update it deliberately; the command above leaves it untouched.
@@ -46,7 +60,7 @@ Implement the missing regression coverage, run the relevant checks,
 and open a pull request with the code, tests, fixtures, and CI changes together.
 ```
 
-In Claude Code, invoke `/repo-testing-ci` with the same task instructions.
+For the marketplace install, invoke `$agent-supply:repo-testing-ci` in Codex or `/agent-supply:repo-testing-ci` in Claude Code. For a manual install in Claude Code, invoke `/repo-testing-ci`.
 
 The skill uses existing project tools. Recommended ECC and shipping skills are optional; it specifies an equivalent workflow when those skills are unavailable. It does not grant permission to publish, merge, deploy, or change production systems merely by being invoked.
 
@@ -72,3 +86,7 @@ python3 -B -m unittest discover -s tests -v
 ```
 
 GitHub Actions runs the same checks on Python 3.10 and 3.14. They validate skill and agent metadata, local Markdown links, portable package paths, and rejection of executable YAML. They do not run a model or prove agent behavior in every host.
+
+## License
+
+[MIT](LICENSE).

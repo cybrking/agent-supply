@@ -1,0 +1,12 @@
+{
+  "name": "agent-supply",
+  "owner": {"name": "Travis Felder", "url": "https://github.com/cybrking"},
+  "metadata": {"description": "Agent skills for repository testing, CI, and pull requests."},
+  "plugins": [
+    {
+      "name": "agent-supply",
+      "source": "./",
+      "description": "AgentSupply skills, starting with repository testing and CI."
+    }
+  ]
+}

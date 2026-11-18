@@ -1,0 +1,8 @@
+{
+  "name": "agent-supply",
+  "version": "0.1.0",
+  "description": "Agent skills for repository testing, CI, and pull requests.",
+  "author": {"name": "Travis Felder", "url": "https://github.com/cybrking"},
+  "license": "MIT",
+  "repository": "https://github.com/cybrking/agent-supply"
+}
